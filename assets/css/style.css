@@ -14,3 +14,17 @@ body {
     background-color: slategrey;
 }
 
+.container {
+    width: 800px;
+    max-width: 80%;
+    border-radius: 5px;
+    padding: 10px;
+    background-color: white;
+}
+
+.btn-grid {
+    display: grid;
+    grid-template-columns: repeat(2, auto);
+    gap: 10px;
+    margin: 20px 0;
+}
