@@ -12,10 +12,10 @@ var final = document.getElementById("controls");
 startButton.addEventListener('click', startGame)
 
 function startGame() {
-    intro.setAttribute('hide', true);
-    questions.setAttribute('hide', true);
-    controls.setAttribute('hide', true);
-    final.setAttribute('hide', true);
+    intro.setAttribute('hidden', true);
+    questions.setAttribute('hidden', true);
+    controls.setAttribute('hidden', true);
+    final.setAttribute('hidden', true);
 } 
 
 
