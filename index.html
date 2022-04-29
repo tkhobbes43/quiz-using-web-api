@@ -16,15 +16,25 @@
             <h1>Take The Quiz!!</h1>
             <p>You have sixty seconds to answer six questions related to JavaScript. Each right answer, you gain 10 points. For each wrong answer, you will lose 10 points and lose 10 seconds off the timer. Your score will be based on your time remaining as well. The game is over once all the questions are answered or the timer reaches 0. Make sure to login your initials after to save your score!</p>
         </div>
-        <div id="question-container">
-            <div id="question">Question</div>
-            <div id="answer-buttons" class="btn-grid">
-                <button class="btn">Answer 1</button>
-                <button class="btn">Answer 2</button>
-                <button class="btn">Answer 3</button>
-                <button class="btn">Answer 4</button>
-            </div> 
-        </div> 
+        <div id="questions" class="info_box card">
+            <div class="question_text">
+                <h2 id="question-text"></h2>
+            </div>
+            <div class="optionList">
+                <div class="option">
+                    <span id="option-01" class="answer"></span>
+                </div>
+                <div class="option">
+                    <span id="option-02" class="answer"></span>
+                </div>
+                <div class="option">
+                    <span id="option-03" class="answer""></span>
+                </div>
+                <div class="option">
+                    <span id="option-04" class="answer"></span>
+                </div>
+            </div>
+        </div>
         <div id="final-container">
             <div id="highscores" class="highscores">Highscores
             </div> 
