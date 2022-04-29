@@ -101,9 +101,7 @@ function answerQuestion (event) {
     }
 }
 
-var reload = function() {
-    location.href = "https://tkhobbes43.github.io/quiz-using-web-api/";
-};
+let reload = location.reload();
 
 var tryAgain = function () {
     location.hreft = "https://tkhobbes43.github.io/quiz-using-web-api/"
@@ -113,3 +111,5 @@ save.addEventListener("click", saveGame)
 highScorePage = document.querySelector(".highschores")
 playAgain.addEventListener("click", reload)
 again.addEventListener("click", reload)
+
+var playAgainButton = document.getElementById('play-again-btn');
