@@ -41,12 +41,12 @@ body {
     border-color: white;
 }
 
-.start-btn, .view-highscores-btn {
+.start-btn, .view-highscores-btn, .play-again-btn {
     font-size: 1.5rem;
     font-weight: bold; 
 }
 
-.controls {
+#controls {
     display: flex;
     justify-content: center;
     align-items: center;
