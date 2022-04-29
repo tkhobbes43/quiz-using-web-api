@@ -6,7 +6,9 @@ var controls = document.getElementById("controls");
 index = 0;
 var questionNumber = 0;
 var elements = document.getElementsByClassName("answer");
-var timer
+
+
+var time = document.getElementById("highscores").innerHTML
 
 const quiz = [
     {
@@ -16,7 +18,7 @@ const quiz = [
     },
     {
         question: 'How do you write "Hello World" in an alert box?',
-        choices: ['msgBox("Hello World");', 'msg("Hello World");', 'alertBox("Hellow World");', 'alert("Hellow World");'],
+        choices: ['msgBox("Hello World");', 'msg("Hello World");', 'alertBox("Hello World");', 'alert("Hello World");'],
         answer: 'alert("Hello World");'
     },
     {
@@ -31,7 +33,7 @@ const quiz = [
     },
     {
         question: 'How can you add a comment in JavaScript?',
-        choices: ['// This is a comment', '<!-- This is a comment -->', '" This is a comment', ' " This is a comment!' ],
+        choices: ['// This is a comment', '!-- This is a comment -->', '" This is a comment', '" This is a comment!' ],
         answer: '// This is a comment'
     },
     {
@@ -48,6 +50,7 @@ function startGame() {
     document.getElementById('controls').style.display = "none"
     document.getElementById('final-container').style.display = "none"
     document.getElementById('questions').style.display = "block"
+    time = 60;
     loadQuestion(questionNumber)
     for (var i = 0; i< elements.length; i++) {
         elements[i].addEventListener("click", answerQuestion);
@@ -66,13 +69,15 @@ function loadQuestion (questionNumber) {
 }
 
 document.getElementById('start-btn').addEventListener("click", function() {
-    timer = setInterval(function function1 () {
-        document.getElementById("time").innerHTML = time + "" + "seconds remaining";
+    var timer = setInterval(function function1 () {
+        document.getElementById("time").innerHTML = time + " " + "seconds remaining";
         time -= 1;
         if (time <= 0) {
             clearInterval(time);
             document.getElementById("time").innerHTML = "Game Over"
             document.getElementById("questions").style.display = "none"
+            document.querySelector(".container").style.display = "none"
+
         }
     }, 1000);
 });
@@ -82,11 +87,11 @@ function answerQuestion (event) {
     if(answered == quiz[questionNumber]["answer"]) {
         time += 10 
     } else {
-        time -= 15
+        time -= 10
     }
     questionNumber += 1
     if(questionNumber <= 4 ) {
-        load_question(questionNumber)
+        loadQuestion(questionNumber)
     } else {
         // load input initials page 
         document.getElementById("questions").style.display = "none"
@@ -95,3 +100,16 @@ function answerQuestion (event) {
         document.getElementById("highScore").innerHTML = time
     }
 }
+
+var reload = function() {
+    location.href = "https://tkhobbes43.github.io/quiz-using-web-api/";
+};
+
+var tryAgain = function () {
+    location.hreft = "https://tkhobbes43.github.io/quiz-using-web-api/"
+};
+
+save.addEventListener("click", saveGame)
+highScorePage = document.querySelector(".highschores")
+playAgain.addEventListener("click", reload)
+again.addEventListener("click", reload)
