@@ -101,8 +101,6 @@ function answerQuestion (event) {
     }
 }
 
-let reload = location.reload();
-
 var tryAgain = function () {
     location.hreft = "https://tkhobbes43.github.io/quiz-using-web-api/"
 };
