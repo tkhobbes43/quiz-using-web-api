@@ -1,38 +1,13 @@
 var startButton = document.getElementById('start-btn')
-// var questionContainerElement = document.getElementById('question-container')
-// var questionContainerElement = document.getElementById('intro-container')
-// var questionContainerElement = document.getElementById('final-container')
-// var questionElement = document.getElementById('question')
-// var answerButtonsElement = document.getElementById('answer-buttons')
 var intro = document.getElementById("intro-container");
 var questions = document.getElementById("question-container");
 var controls = document.getElementById("final-container");
 var final = document.getElementById("controls");
-
+index = 0;
 var questionNumber
+var elements = document.getElementsByClassName("answer")
 
 startButton.addEventListener('click', startGame)
-
-function startGame() {
-    intro.setAttribute('hidden', true);
-    document.getElementById('controls').style.display = "none"
-    document.getElementById('questions').style.display = "block"
-    document.getElementById('questions').style.display = "none"
-    questionNumber = 0;
-    loadQuestion(questionNumber)
-} 
-
-function loadQuestion (questionNumber) {
-    document.getElementById("question_text").innerHTML = quiz[questionNumber]["question"]
-    document.getElementById("option-01").innerHTML = quiz[question_number]["choices"][0]
-    document.getElementById("option-02").innerHTML = quiz[question_number]["choices"][1]
-    document.getElementById("option-03").innerHTML = quiz[question_number]["choices"][2]
-    document.getElementById("option-04").innerHTML = quiz[question_number]["choices"][3]
-    for (var i = 0; i< elements.length; i++) {
-        elements[i].addEventListener("click", answer_question);
-    }
-}
-
 
 const quiz = [
     {
@@ -66,36 +41,42 @@ const quiz = [
         answer: 'for ( i = 0; i <= 5; i++)'
     },
 ];
-// let hideIntroContainer = 
-// let hidefinalContainer = 
 
+function startGame() {
+    intro.setAttribute('hidden', true);
+    document.getElementById('controls').style.display = "none"
+    document.getElementById('questions').style.display = "block"
+    document.getElementById('questions').style.display = "none"
+    questionNumber = 0;
+    loadQuestion(questionNumber)
+    for (var i = 0; i< elements.length; i++) {
+        elements[i].addEventListener("click", answerQuestion);
+    }
+} 
 
+function loadQuestion (questionNumber) {
+    document.getElementById("question_text").innerHTML = quiz[questionNumber]["question"]
+    document.getElementById("option-01").innerHTML = quiz[question_number]["choices"][0]
+    document.getElementById("option-02").innerHTML = quiz[question_number]["choices"][1]
+    document.getElementById("option-03").innerHTML = quiz[question_number]["choices"][2]
+    document.getElementById("option-04").innerHTML = quiz[question_number]["choices"][3]
+}
 
-// function startGame() {
-//     startButton.classList.add('hide')
-//     currentQuestionIndex = 0
-//     time = 60;
-//     questionContainerElement.classList.remove('hide')
-//     setNextQuestion()
+// function answerQuestion (event) {
+//     answered = event.target.innerHTML
+//     if(answered == quiz[questionNumber]["answer"]) {
+//         time += 10 
+//     } else {
+//         time -= 15
+//     }
+//     questionNumber += 1
+//     if(questionNumber <= 4 ) {
+//         load_question(questionNumber)
+//     } else {
+//         // load input initials page 
+//         document.getElementById("questions").style.display = "none"
+//         document.getElementById("time").style.display = "none"
+//         document.getElementById("log").style.display = "block"
+//         document.getElementById("highScore").innerHTML = time
+//     }
 // }
-
-// function setNextQuestion() {
-
-// }
-
-// function showQuestion(question) {
-//     questionElement 
-// }
-
-// function selectAnswer() {
-
-// }
-
-// function startTimer() {
-
-// }
-
-// function viewHighscores () {
-    
-// }
-
