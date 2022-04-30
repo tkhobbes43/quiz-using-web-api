@@ -8,6 +8,7 @@ var time = document.getElementById("highScores").innerHTML
 var log = document.querySelector(".finalLog");
 var questionNumber = 0;
 index = 0;
+var timer
 
 const quiz = [
     {
@@ -75,10 +76,10 @@ document.getElementById('start-btn').addEventListener("click", function() {
             clearInterval(time);
             document.getElementById("time").innerHTML = "Game Over"
             document.getElementById("questions").style.display = "none"
-            document.querySelector(".container").style.display = "none"
             document.getElementById("log").style.display = "block"
+            console.log("game finished")
 
-        }
+        } e
     }, 1000);
 });
 
@@ -140,6 +141,6 @@ function highscores() {
 };
 
 save.addEventListener("click", saveGame)
-highScorePage = document.querySelector(".highschores")
+highScorePage = document.querySelector(".highscores")
 
 var playAgainButton = document.getElementById('play-again-btn');
