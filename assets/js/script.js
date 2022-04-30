@@ -82,6 +82,8 @@ document.getElementById('start-btn').addEventListener("click", function() {
     }, 1000);
 });
 
+
+
 function answerQuestion (event) {
     answered = event.target.innerHTML
     if(answered == quiz[questionNumber]["answer"]) {
@@ -100,10 +102,6 @@ function answerQuestion (event) {
         document.getElementById("highScore").innerHTML = time
     }
 }
-
-var tryAgain = function () {
-    location.hreft = "https://tkhobbes43.github.io/quiz-using-web-api/"
-};
 
 save.addEventListener("click", saveGame)
 highScorePage = document.querySelector(".highschores")
