@@ -3,12 +3,11 @@ var intro = document.getElementById("intro-container");
 var questions = document.getElementById("question-container");
 var final = document.getElementById("final-container");
 var controls = document.getElementById("controls");
-index = 0;
-var questionNumber = 0;
 var elements = document.getElementsByClassName("answer");
-
-
-var time = document.getElementById("highscores").innerHTML
+var time = document.getElementById("highScores").innerHTML
+var log = document.querySelector(".finalLog");
+var questionNumber = 0;
+index = 0;
 
 const quiz = [
     {
@@ -77,12 +76,11 @@ document.getElementById('start-btn').addEventListener("click", function() {
             document.getElementById("time").innerHTML = "Game Over"
             document.getElementById("questions").style.display = "none"
             document.querySelector(".container").style.display = "none"
+            document.getElementById("log").style.display = "block"
 
         }
     }, 1000);
 });
-
-
 
 function answerQuestion (event) {
     answered = event.target.innerHTML
@@ -99,13 +97,49 @@ function answerQuestion (event) {
         document.getElementById("questions").style.display = "none"
         document.getElementById("time").style.display = "none"
         document.getElementById("log").style.display = "block"
-        document.getElementById("highScore").innerHTML = time
+        document.getElementById("highScores").innerHTML = time
     }
 }
 
+function saveGame() {
+    document.getElementById("log").style.display = "none"
+    document.getElementById("finale").style.display = "block"
+    highScores = document.getElementById("highScore").innerHTML
+    initials = document.getElementById("initials").value
+    if (initials <= 0) {
+        window.alert("Must put in your initials")
+        return;
+    }
+    let logScores = JSON.parse(localStorage.getItem("yourScores")) || [];
+    let numbers = {Initials: initials, Score: highScore}
+    logScores.push(numbers)
+    console.log(logScores)
+    setScore(logScores)
+    localStorage.setItem("yourScores", JSON.stringify(logScores))
+};
+
+function setScore(logScores) {
+    for (var i = 0; i< logScores.length; i++) {
+        var logScore = document.getElementById("finalLog")
+        var ulScores = document.createElement("li")
+        ulScores.setAttribute('class', 'yourScores')
+        ulScores.textContent = logScores[i].Score
+        finalLog.appendChild(ulScores)
+        var ulInitials = document.createElement('li')
+        ulInitials.setAttribute('class', 'yourInitials')
+        finalLog.appendChild(ulInitials)
+    };
+};
+
+function highscores() {
+    document.getElementById("intro").style.display = "none"
+    document.getElementById("finale").style.display = "block"
+    var getScore = JSON.parse(localStorage.getItem("yourScores"));
+    setScore(getScore)
+    console.log(getScore)
+};
+
 save.addEventListener("click", saveGame)
 highScorePage = document.querySelector(".highschores")
-playAgain.addEventListener("click", reload)
-again.addEventListener("click", reload)
 
 var playAgainButton = document.getElementById('play-again-btn');
