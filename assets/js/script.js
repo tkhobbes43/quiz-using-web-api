@@ -79,7 +79,7 @@ document.getElementById('start-btn').addEventListener("click", function() {
             document.getElementById("log").style.display = "block"
             console.log("game finished")
 
-        } e
+        } 
     }, 1000);
 });
 
