@@ -20,4 +20,4 @@ THEN I can save my initials and my score
 
 [Link to deployed application] (https://tkhobbes43.github.io/quiz-using-web-api/)
 
-![screenshot of website]()
+![screenshot of website](assets/images/Capture.PNG)
