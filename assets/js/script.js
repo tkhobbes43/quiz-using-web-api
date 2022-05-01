@@ -102,45 +102,45 @@ function answerQuestion (event) {
     }
 }
 
-function saveGame() {
-    document.getElementById("log").style.display = "none"
-    document.getElementById("finale").style.display = "block"
-    highScores = document.getElementById("highScore").innerHTML
-    initials = document.getElementById("initials").value
-    if (initials <= 0) {
-        window.alert("Must put in your initials")
-        return;
-    }
-    let logScores = JSON.parse(localStorage.getItem("yourScores")) || [];
-    let numbers = {Initials: initials, Score: highScore}
-    logScores.push(numbers)
-    console.log(logScores)
-    setScore(logScores)
-    localStorage.setItem("yourScores", JSON.stringify(logScores))
-};
+// function saveGame() {
+//     document.getElementById("log").style.display = "none"
+//     document.getElementById("finale").style.display = "block"
+//     highScores = document.getElementById("highScore").innerHTML
+//     initials = document.getElementById("initials").value
+//     if (initials <= 0) {
+//         window.alert("Must put in your initials")
+//         return;
+//     }
+//     let logScores = JSON.parse(localStorage.getItem("yourScores")) || [];
+//     let numbers = {Initials: initials, Score: highScore}
+//     logScores.push(numbers)
+//     console.log(logScores)
+//     setScore(logScores)
+//     localStorage.setItem("yourScores", JSON.stringify(logScores))
+// };
 
-function setScore(logScores) {
-    for (var i = 0; i< logScores.length; i++) {
-        var logScore = document.getElementById("finalLog")
-        var ulScores = document.createElement("li")
-        ulScores.setAttribute('class', 'yourScores')
-        ulScores.textContent = logScores[i].Score
-        finalLog.appendChild(ulScores)
-        var ulInitials = document.createElement('li')
-        ulInitials.setAttribute('class', 'yourInitials')
-        finalLog.appendChild(ulInitials)
-    };
-};
+// function setScore(logScores) {
+//     for (var i = 0; i< logScores.length; i++) {
+//         var logScore = document.getElementById("finalLog")
+//         var ulScores = document.createElement("li")
+//         ulScores.setAttribute('class', 'yourScores')
+//         ulScores.textContent = logScores[i].Score
+//         finalLog.appendChild(ulScores)
+//         var ulInitials = document.createElement('li')
+//         ulInitials.setAttribute('class', 'yourInitials')
+//         finalLog.appendChild(ulInitials)
+//     };
+// };
 
-function highscores() {
-    document.getElementById("intro").style.display = "none"
-    document.getElementById("finale").style.display = "block"
-    var getScore = JSON.parse(localStorage.getItem("yourScores"));
-    setScore(getScore)
-    console.log(getScore)
-};
+// function highscores() {
+//     document.getElementById("intro").style.display = "none"
+//     document.getElementById("finale").style.display = "block"
+//     var getScore = JSON.parse(localStorage.getItem("yourScores"));
+//     setScore(getScore)
+//     console.log(getScore)
+// };
 
-save.addEventListener("click", saveGame)
-highScorePage = document.querySelector(".highscores")
+// save.addEventListener("click", saveGame)
+// highScorePage = document.querySelector(".highscores")
 
-var playAgainButton = document.getElementById('play-again-btn');
+// var playAgainButton = document.getElementById('play-again-btn');
