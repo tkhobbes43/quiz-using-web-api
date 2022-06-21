@@ -3,12 +3,16 @@ var intro = document.getElementById("intro-container");
 var questions = document.getElementById("question-container");
 var final = document.getElementById("final-container");
 var controls = document.getElementById("controls");
+var scoreArea = document.getElementById("log");
 var elements = document.getElementsByClassName("answer");
 var time = document.getElementById("highScores").innerHTML
 var log = document.querySelector(".finalLog");
 var questionNumber = 0;
+var viewHighScoresButton = document.getElementById("highScores");
 index = 0;
 var timer
+
+let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
 const quiz = [
     {
@@ -44,6 +48,7 @@ const quiz = [
 ];
 
 startButton.addEventListener('click', startGame)
+viewHighScoresButton.addEventListener('click', displayScores)
 
 function startGame() {
     intro.setAttribute('hidden', true);
@@ -51,6 +56,7 @@ function startGame() {
     document.getElementById('final-container').style.display = "none"
     document.getElementById('questions').style.display = "block"
     time = 60;
+    scoreArea.innerHTML = '';
     loadQuestion(questionNumber)
     for (var i = 0; i< elements.length; i++) {
         elements[i].addEventListener("click", answerQuestion);
@@ -69,7 +75,7 @@ function loadQuestion (questionNumber) {
 }
 
 document.getElementById('start-btn').addEventListener("click", function() {
-    var timer = setInterval(function function1 () {
+    var timer = setInterval(function () {
         document.getElementById("time").innerHTML = time + " " + "seconds remaining";
         time -= 1;
         if (time <= 0) {
@@ -78,6 +84,7 @@ document.getElementById('start-btn').addEventListener("click", function() {
             document.getElementById("questions").style.display = "none"
             document.getElementById("log").style.display = "block"
             console.log("game finished")
+            console.log(timer);
 
         } 
     }, 1000);
@@ -132,13 +139,13 @@ function answerQuestion (event) {
 //     };
 // };
 
-// function highscores() {
-//     document.getElementById("intro").style.display = "none"
-//     document.getElementById("finale").style.display = "block"
-//     var getScore = JSON.parse(localStorage.getItem("yourScores"));
-//     setScore(getScore)
-//     console.log(getScore)
-// };
+function displayScores() {
+    document.getElementById("intro").style.display = "none"
+    document.getElementById("finale").style.display = "block"
+    var getScore = JSON.parse(localStorage.getItem("yourScores"));
+    setScore(getScore)
+    console.log(getScore)
+};
 
 // save.addEventListener("click", saveGame)
 // highScorePage = document.querySelector(".highscores")
