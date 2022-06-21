@@ -1,11 +1,12 @@
-var startButton = document.getElementById('start-btn');
 var intro = document.getElementById("intro-container");
+var startButton = document.getElementById('start-btn');
 var questions = document.getElementById("question-container");
-var final = document.getElementById("final-container");
-var controls = document.getElementById("controls");
-var scoreArea = document.getElementById("log");
 var elements = document.getElementsByClassName("answer");
+var controls = document.getElementById("controls");
 var time = document.getElementById("highScores").innerHTML
+
+var final = document.getElementById("final-container");
+var scoreArea = document.getElementById("log");
 var log = document.querySelector(".finalLog");
 var questionNumber = 0;
 var viewHighScoresButton = document.getElementById("highScores");
@@ -59,11 +60,24 @@ function startGame() {
     document.getElementById('questions').style.display = "block"
     time = 60;
     scoreArea.innerHTML = '';
+    startClock();
     loadQuestion(questionNumber)
     for (var i = 0; i< elements.length; i++) {
         elements[i].addEventListener("click", answerQuestion);
     }
 } 
+
+// function that starts the clock
+function startClock() {
+    document.getElementById("time").innerHTML = `${time} seconds remaining`;
+    time -= 1;
+    if (time <= 0) {
+        gameOver();
+        document.getElementById("time").innerHTML = "Game Over"
+        document.getElementById("questions").style.display = "none"
+        document.getElementById("log").style.display = "block"
+    }
+}
 
 // function for loading the questions
 function loadQuestion (questionNumber) {
@@ -78,19 +92,7 @@ function loadQuestion (questionNumber) {
 }
 
 document.getElementById('start-btn').addEventListener("click", function() {
-    var timer = setInterval(function () {
-        document.getElementById("time").innerHTML = time + " " + "seconds remaining";
-        time -= 1;
-        if (time <= 0) {
-            clearInterval(time);
-            document.getElementById("time").innerHTML = "Game Over"
-            document.getElementById("questions").style.display = "none"
-            document.getElementById("log").style.display = "block"
-            console.log("game finished")
-            console.log(timer);
-
-        } 
-    }, 1000);
+    
 });
 
 function answerQuestion (event) {
@@ -112,37 +114,10 @@ function answerQuestion (event) {
     }
 }
 
-// function saveGame() {
-//     document.getElementById("log").style.display = "none"
-//     document.getElementById("finale").style.display = "block"
-//     highScores = document.getElementById("highScore").innerHTML
-//     initials = document.getElementById("initials").value
-//     if (initials <= 0) {
-//         window.alert("Must put in your initials")
-//         return;
-//     }
-//     let logScores = JSON.parse(localStorage.getItem("yourScores")) || [];
-//     let numbers = {Initials: initials, Score: highScore}
-//     logScores.push(numbers)
-//     console.log(logScores)
-//     setScore(logScores)
-//     localStorage.setItem("yourScores", JSON.stringify(logScores))
-// };
-
-// function setScore(logScores) {
-//     for (var i = 0; i< logScores.length; i++) {
-//         var logScore = document.getElementById("finalLog")
-//         var ulScores = document.createElement("li")
-//         ulScores.setAttribute('class', 'yourScores')
-//         ulScores.textContent = logScores[i].Score
-//         finalLog.appendChild(ulScores)
-//         var ulInitials = document.createElement('li')
-//         ulInitials.setAttribute('class', 'yourInitials')
-//         finalLog.appendChild(ulInitials)
-//     };
-// };
-
 // function for game over
+function gameOver() {
+    clearInterval(timer);
+}
 
 // function to submit high scores
 
