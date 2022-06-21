@@ -12,6 +12,7 @@ var viewHighScoresButton = document.getElementById("highScores");
 index = 0;
 var timer
 
+// local Storage objects
 let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
 
 const quiz = [
@@ -50,6 +51,7 @@ const quiz = [
 startButton.addEventListener('click', startGame)
 viewHighScoresButton.addEventListener('click', displayScores)
 
+// function for starting the game
 function startGame() {
     intro.setAttribute('hidden', true);
     document.getElementById('controls').style.display = "none"
@@ -63,6 +65,7 @@ function startGame() {
     }
 } 
 
+// function for loading the questions
 function loadQuestion (questionNumber) {
     console.log(quiz[questionNumber].question);
     console.log(quiz[questionNumber].choices);
@@ -139,6 +142,13 @@ function answerQuestion (event) {
 //     };
 // };
 
+// function for game over
+
+// function to submit high scores
+
+// function to clear high scores
+
+// function to display high scores
 function displayScores() {
     document.getElementById("intro").style.display = "none"
     document.getElementById("finale").style.display = "block"
