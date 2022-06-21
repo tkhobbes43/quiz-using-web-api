@@ -12,6 +12,7 @@ var questionNumber = 0;
 var viewHighScoresButton = document.getElementById("highScores");
 index = 0;
 var timer
+let runingTimer
 
 // local Storage objects
 let highScores = JSON.parse(localStorage.getItem("highScores")) || [];
@@ -70,12 +71,11 @@ function startGame() {
 // function that starts the clock
 function startClock() {
     document.getElementById("time").innerHTML = `${time} seconds remaining`;
-    time -= 1;
     if (time <= 0) {
         gameOver();
-        document.getElementById("time").innerHTML = "Game Over"
-        document.getElementById("questions").style.display = "none"
-        document.getElementById("log").style.display = "block"
+    } else {
+        time -= 1;
+        runningTimer = setTimeout(startClock, 1000);
     }
 }
 
@@ -90,10 +90,6 @@ function loadQuestion (questionNumber) {
     document.getElementById("option-04").innerHTML = quiz[questionNumber].choices[3]
     
 }
-
-document.getElementById('start-btn').addEventListener("click", function() {
-    
-});
 
 function answerQuestion (event) {
     answered = event.target.innerHTML
@@ -116,7 +112,7 @@ function answerQuestion (event) {
 
 // function for game over
 function gameOver() {
-    clearInterval(timer);
+    clearTimeout(runningTimer);
 }
 
 // function to submit high scores
@@ -125,6 +121,7 @@ function gameOver() {
 
 // function to display high scores
 function displayScores() {
+    clearInterval(runningTimer);
     document.getElementById("intro").style.display = "none"
     document.getElementById("finale").style.display = "block"
     var getScore = JSON.parse(localStorage.getItem("yourScores"));
